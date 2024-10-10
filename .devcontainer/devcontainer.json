@@ -1,0 +1,13 @@
+{
+  "name": "Ziglings Exercises",
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": { "vscode": { "extensions": ["ziglang.vscode-zig"] } },
+  "containerEnv": {
+    "USER_UID": "${localEnv:UID:1000}",
+    "USER_GID": "${localEnv:GID:1000}"
+  },
+  "remoteUser": "newbie",
+  "workspaceFolder": "/ziglings",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/ziglings,type=bind,consistency=cached",
+  "postCreateCommand": "cp -rn /source/exercises/* /ziglings && cp -rn /source/exercises/.* /ziglings"
+}
